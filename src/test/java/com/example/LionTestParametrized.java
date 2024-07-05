@@ -33,10 +33,13 @@ public class LionTestParametrized {
 
     @Test
     public void testCreateFailLion(){
+        boolean thrown = false;
         try {
             Lion lion = new Lion(sex, feline);
         } catch (Exception exception) {
+            thrown = true;
             assertEquals("Используйте только значения пола животного - самец или самка", exception.getMessage());
         }
+        assertTrue("Ожидалось исключение для несуществующего пола", thrown);
     }
 }

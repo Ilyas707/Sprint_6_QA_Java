@@ -48,9 +48,15 @@ public class LionTest {
         assertEquals(expected, actual);
     }
 
-    @Test(expected = Exception.class)
-    public void createLionInvalidGender() throws Exception {
-        Lion lion = new Lion("Оно", feline);
-        lion.doesHaveMane();
+    @Test
+    public void createLionInvalidGender() {
+        try {
+            Lion lion = new Lion("Оно", feline);
+            lion.doesHaveMane();
+            fail("Expected an Exception to be thrown");
+        } catch (Exception e) {
+            String expectedMessage = "Используйте только значения пола животного - самец или самка";
+            assertEquals(expectedMessage, e.getMessage());
+        }
     }
 }
